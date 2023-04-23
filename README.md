@@ -1,6 +1,11 @@
 # IA Interactive 
 
 API Rest Desarrollada en FastAPI 
+Un Buen Ejercicio de backend con Python y el Framework FastAPI
+Proyect Academy Magic
+author: Charles Benitez
+mail: charlesjbenitez1993@gmail.com
+
 
 ![FastApi](https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png)
 
