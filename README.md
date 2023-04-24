@@ -127,3 +127,38 @@ mail: charlesjbenitez1993@gmail.com
     Utiliza el id de un registro para eliminarlo de la BD
 
 ![swagger FastApi](./docs/delete.png) 
+
+# **Uso de Interfaz web**
+
+- En la siguiente rama puedes tener una version con una interfaz sencilla.
+- https://github.com/charlesbenitez16/academy_magic/tree/feature/interfaz-web
+
+Para ser utilizada solo debe descargar y descomprimir el documento
+
+# **Nota:** Repetir los paso 2 y 3 para poder tener todas las dependencias de las instrucciones
+
+**Ejecucion de la interfaz**
+
+1. Activar el servidor local
+    ```
+    uvicorn main:app --reload
+    ```
+
+2. Ir a tu navegador y colocar el siguiente link   
+
+    - http://127.0.0.1:8000/inicio
+
+
+**Vistas**
+1. Inicio
+![swagger FastApi](./docs/interfaz.png)
+
+2. Agregar solicitud
+![swagger FastApi](./docs/add_solicitud.png)
+
+3. Ver todas las solicitudes
+    - en esta vista podemos eliminar un registro o actualizar su status
+![swagger FastApi](./docs/all_solicitudes.png)
+
+4. Actualizar solicitud
+![swagger FastApi](./docs/update.png)
