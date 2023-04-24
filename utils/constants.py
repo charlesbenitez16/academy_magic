@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-#import pandas as pd
+import pandas as pd
 
 load_dotenv()
 
@@ -18,6 +18,10 @@ STATUS_ACCEPTED = "accepted"
 
 
 list_magic = ["Oscuridad", "Luz", "Fuego", "Agua", "Viento", "Tierra"]
+full_magic = pd.read_csv('./static/magias.csv', dtype= str)
+list_f = full_magic["magias"].to_list()
+full_magic = [i.title() for i in list_f]
+list_magic = list_magic + full_magic
 
 
 tupla_grimorios = [
