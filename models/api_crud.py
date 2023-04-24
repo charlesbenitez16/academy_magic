@@ -15,17 +15,17 @@ def verify_id(dbs: Session, id: str) -> list:
         id: id de solicitud para buscar en base de datos.
 
     Returns:
-        item: una lista de objeto del modelo StudentAcademy.
+        register: una lista de objeto del modelo StudentAcademy.
     """
-    item = (
+    register = (
         dbs.query(db_models.StudentAcademy)
         .filter(db_models.StudentAcademy.id == id)
         .first()
     )
-    if item is None:
-        raise HTTPException(status_code=404, detail="Id not Found")
+    if register is None:
+        register = {}
 
-    return item
+    return register
 
 
 def update_user(dbs: Session, user: academy_schema.Agree) -> list:
@@ -37,18 +37,18 @@ def update_user(dbs: Session, user: academy_schema.Agree) -> list:
         user: objeto de tipo Agree para actualizar el item en la base de datos.
 
     Returns:
-        item: una lista de objeto del modelo StudentAcademy..
+        register: una lista de objeto del modelo StudentAcademy..
     """
-    item = verify_id(dbs, user.id)
-    item.first_name = user.first_name
-    item.last_name = user.last_name
-    item.age = user.age
-    item.magic_affinity = user.magic_affinity
+    register = verify_id(dbs, user.id)
+    register.first_name = user.first_name
+    register.last_name = user.last_name
+    register.age = user.age
+    register.magic_affinity = user.magic_affinity
 
-    dbs.add(item)
+    dbs.add(register)
     dbs.commit()
-    dbs.refresh(item)
-    return item
+    dbs.refresh(register)
+    return register
 
 
 def create_user(
@@ -72,7 +72,7 @@ def create_user(
         age=user.age,
         magic_affinity=user.magic_affinity,
         grimorio=grimorio,
-        status=constants.STATUS_INPUT,
+        status=constants.STATUS_PENDIND,
     )
 
     dbs.add(user)
@@ -90,14 +90,14 @@ def update_status(dbs: Session, id: str) -> list:
         id: id de solicitud para buscar en la base de datos.
 
     Returns:
-        item: una lista de objeto del modelo StudendAcademy.
+        register: una lista de objeto del modelo StudendAcademy.
     """
-    item = verify_id(dbs, id)
-    item.status = constants.STATUS_UPDATE
-    dbs.add(item)
+    register = verify_id(dbs, id)
+    register.status = constants.STATUS_ACCEPTED
+    dbs.add(register)
     dbs.commit()
-    dbs.refresh(item)
-    return item
+    dbs.refresh(register)
+    return register
 
 
 def select_grimorio(dbs: Session, id: str) -> list:
@@ -109,10 +109,10 @@ def select_grimorio(dbs: Session, id: str) -> list:
         id : id de solicitud para buscar en la base de datos.
 
     Returns:
-        item: una lista de objeto del modelo Applicant.
+        register: una lista de objeto del modelo Applicant.
     """
-    item = verify_id(dbs, id)
-    return item
+    register = verify_id(dbs, id)
+    return register
 
 
 def delete_student(dbs: Session, id: str) -> list:
@@ -124,9 +124,9 @@ def delete_student(dbs: Session, id: str) -> list:
         id: id de solicitud para eliminar en la base de datos.
 
     Returns:
-        item: una lista de objeto del modelo Applicant.
+        register: una lista de objeto del modelo Applicant.
     """
-    item = verify_id(dbs,id)
-    dbs.delete(item)
+    register = verify_id(dbs,id)
+    dbs.delete(register)
     dbs.commit()
-    return item
+    return register

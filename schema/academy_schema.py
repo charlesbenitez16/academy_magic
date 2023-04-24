@@ -42,8 +42,8 @@ class Agree(BaseModel):
         """
         Validar Afinidad magica
         """
-        affinity = set(constants.list_magic)
-        if not value in affinity:
+        affinity = constants.list_magic
+        if not value.title() in affinity:
             raise ValueError(f"El valor {value} no está permitido")
         return value
 

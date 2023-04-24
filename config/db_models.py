@@ -9,9 +9,9 @@ class StudentAcademy(Base):
 
     __tablename__ = "academy_users"
     id = Column(String(10), primary_key=True)
-    first_name = Column(String(20))
-    last_name = Column(String(20))
-    age = Column(SmallInteger)
-    magic_affinity = Column(String(20))
-    grimorio = Column(String(255))
-    status = Column(String(20), default=True)
+    first_name = Column(String(20),nullable=False)
+    last_name = Column(String(20),nullable=False)
+    age = Column(SmallInteger,nullable=False)
+    magic_affinity = Column(String(20),nullable=False)
+    grimorio = Column(String(255),nullable=False)
+    status = Column(String(20), nullable=False)
