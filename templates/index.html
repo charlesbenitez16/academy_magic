@@ -1,0 +1,59 @@
+{% include 'cabecera.html' %}
+
+    <br/>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>first_name</th>
+                <th>last_name</th>
+                <th>age</th>
+                <th>grimorio</th>
+                <th>magic_affinity</th>
+                <th>status</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in context %}
+            <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.first_name}}</td>
+                <td>{{data.last_name}}</td>
+                <td>{{data.age}}</td>
+                <td>{{data.grimorio}}</td>
+                <td>{{data.magic_affinity}}</td>
+                <td>{{data.status}}</td>
+                <td>
+                    <form id="form-button" action="/api/delete_student" method="post">
+                        <input value="{{data.id}}" type="text" name="id">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form> 
+                    <form id="form-button" action="/api/status/" method="post">
+                        <input value="{{data.id}}" type="text" name="id">
+                        <button type="submit">Actualizar Status</button>
+                    </form>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        // Obtener los elementos de la página
+        var form = document.querySelector("form");
+        var toggleButton = document.getElementById("toggle-button");
+      
+        // Agregar un evento de clic al botón para mostrar y ocultar el formulario
+        toggleButton.addEventListener("click", function() {
+          if (form.style.display === "none") {
+            form.style.display = "block";
+            toggleButton.textContent = "Ocultar formulario";
+          } else {
+            form.style.display = "none";
+            toggleButton.textContent = "Mostrar formulario";
+          }
+        });
+      </script>
+	
+{% include 'pie.html' %}

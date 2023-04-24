@@ -39,11 +39,11 @@ def update_user(dbs: Session, user: academy_schema.Agree) -> list:
     Returns:
         register: una lista de objeto del modelo StudentAcademy..
     """
-    register = verify_id(dbs, user.id)
-    register.first_name = user.first_name
-    register.last_name = user.last_name
-    register.age = user.age
-    register.magic_affinity = user.magic_affinity
+    register = verify_id(dbs, user["id"])
+    register.first_name = user["first_name"]
+    register.last_name = user["last_name"]
+    register.age = user["age"]
+    register.magic_affinity = user["magic_affinity"]
 
     dbs.add(register)
     dbs.commit()
@@ -66,11 +66,11 @@ def create_user(
         user: un objeto del modelo StudentAcademy.
     """
     user = db_models.StudentAcademy(
-        id=user.id,
-        first_name=user.first_name,
-        last_name=user.last_name,
-        age=user.age,
-        magic_affinity=user.magic_affinity,
+        id=user["id"],
+        first_name=user["first_name"],
+        last_name=user["last_name"],
+        age=user["age"],
+        magic_affinity=user["magic_affinity"],
         grimorio=grimorio,
         status=constants.STATUS_PENDIND,
     )

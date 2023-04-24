@@ -1,0 +1,23 @@
+{% include 'cabecera.html' %}
+
+    <div>
+        <h2>Agregar Solicitud</h2>
+        <button id="toggle-button">Mostrar formulario</button>
+        <form action="/api/solicitud" method="post">
+        <label for="id">id:</label>
+        <input name="id" type="text">    
+        <label for="first_name">first_name:</label>
+        <input name="first_name" type="text">
+        <label for="last_name">last_name:</label>
+        <input name="last_name" type="text">
+        <label for="age">Age:</label>
+        <input name="age" type="number">
+        <label for="magic_affinity">Magic Affinity:</label>
+        <input name="magic_affinity" type="text">
+        <input type="submit" class="btn btn-primary" value="Enviar">
+        </form>
+    </div>
+
+
+
+{% include 'pie.html' %} 
